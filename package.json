@@ -1,0 +1,21 @@
+{
+  "name": "sentiment-and-keyword",
+  "version": "1.0.5",
+  "description": "Analyze strings based on sentiment and keyword strength using synonyms sentiment analysis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sentiment",
+    "strings",
+    "analysis",
+    "keywords"
+  ],
+  "author": "Ashley Sanders",
+  "license": "ISC",
+  "dependencies": {
+    "sentiment": "^5.0.2",
+    "thesaurus": "0.0.1"
+  }
+}
