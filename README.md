@@ -33,22 +33,25 @@ sentkey.analyze(text,keywords,function(err,res){
 ```json
 {
         "text": "The text you sent for analysis",
-        "sentiment_score": 7,
-        "sentiment_status": "Positive",
-        "sentiment_calculation": [  {"keyword1": 2},
-                                    {"keyword2": 3} ],
-        "sentiment_comparative": "1.67",
-        "strength_tracker": [ {"keyword": "Independent", "score": 3},
+        "sentiment_score": 0,
+        "sentiment_status": "Neutral",
+        "sentiment_calculation": [  {"Independent": 0},
+                                    {"Honest": 0},
+                                    {"Collaborative": 0},
+                                    {"Brilliant": 0},
+                                    {"Caring": 0} ],
+        "sentiment_comparative": "0",
+        "strength_tracker": [ {"keyword": "Independent", "score": 0},
                               {"keyword": "Honest", "score": 0},
-                              {"keyword": "Collaborative", "score": 2},
-                              {"keyword": "Brilliant", "score": 4},
-                              {"keyword": "Caring", "score": 1} ],
+                              {"keyword": "Collaborative", "score": 0},
+                              {"keyword": "Brilliant", "score": 0},
+                              {"keyword": "Caring", "score": 0} ],
         "graph_data": [ ["Keyword", "Percentage", { "role": "style" }],
                         ["keyword1", 0, "#color"],
-                        ["keyword3", 50, "#color"],
-                        ["keyword4", 25, "#color"],
-                        ["keyword5", 15, "#color"],
-                        ["keyword6", 10, "#color"],  ]
+                        ["keyword3", 0, "#color"],
+                        ["keyword4", 0, "#color"],
+                        ["keyword5", 0, "#color"],
+                        ["keyword6", 0, "#color"],  ]
     };
 
 ```

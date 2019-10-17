@@ -1,6 +1,6 @@
 {
   "name": "sentiment-and-keyword",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Analyze strings based on sentiment and keyword strength using synonyms sentiment analysis",
   "main": "index.js",
   "scripts": {
