@@ -1,6 +1,6 @@
 # [sentiment-and-keyword](https://www.npmjs.com/package/sentiment-and-keyword)
 
-### Analyze strings based on sentiment and keyword strength using of synonyms and related concepts.
+### Analyze strings based on sentiment and keyword strength using synonyms and related concepts.
 
 See https://www.npmjs.com/package/sentiment-and-keyword
 
