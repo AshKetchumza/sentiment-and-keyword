@@ -14,9 +14,9 @@ See https://www.npmjs.com/package/sentiment-and-keyword
 const sentkey = require('sentiment-and-keyword');
 
 // Set your text to analyzed *required
-var text = "The text you want to be analyzed";
+let text = "The text you want to be analyzed";
 // Set your keywords to be used for analysis *required
-var keywords = ["Independent", "Honest", "Collaborative", "Brilliant", "Caring"];
+let keywords = ["Independent", "Honest", "Collaborative", "Brilliant", "Caring"];
 
 sentkey.analyze(text,keywords,function(err,res){
     if(err){

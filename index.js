@@ -4,16 +4,16 @@ const Sentiment = require('sentiment');
 
 function getThesaurus(keywords) {  
     return new Promise(resolve => {
-        var results = [];
+        let results = [];
         // Some additions
-        var independent = ['by yourself', 'visionary', 'pioneer', 'pioneering', 'freethinking', 'individualistic', 'self-motivated', 'self', 'independence'];
-        var honest = ['truth', 'truthfully', 'integrity', 'sincere', 'sincerity',	'truthful', 'sincere', 'genuine', 'candid',	'trustworthy', 'trust', 'honesty'];
-        var caring = ['friendly', 'welcoming', 'welcome', 'at home', 'look after', 'selfless', 'encouraging', 'encourage', 'soothe', 'soothing', 'hospitable', 'hospitality', 'considerate', 'attentive', 'thoughtful', 'compassionate', 'kind', 'warm-hearted', 'generosity', 'looking after', 'taking care of'];
-        var collaborative = ['teamwork', 'collaboration', 'together', 'cross-department', 'interdependent', 'group', 'unite', 'team up', 'collude', 'amalgamate', 'team', 'team work', 'team player'];
-        var brilliant = ['sharp', 'achiever', 'over-achiever', 'achievement', 'award', 'best', 'awesome', 'amazing', 'limitless', 'gifted', 'accomplished', 'intellectual', 'excellent', 'talented', 'smart', 'witty', 'wit', 'smarty pants'];
+        let independent = ['by yourself', 'visionary', 'pioneer', 'pioneering', 'freethinking', 'individualistic', 'self-motivated', 'self', 'independence'];
+        let honest = ['truth', 'truthfully', 'integrity', 'sincere', 'sincerity',	'truthful', 'sincere', 'genuine', 'candid',	'trustworthy', 'trust', 'honesty'];
+        let caring = ['friendly', 'welcoming', 'welcome', 'at home', 'look after', 'selfless', 'encouraging', 'encourage', 'soothe', 'soothing', 'hospitable', 'hospitality', 'considerate', 'attentive', 'thoughtful', 'compassionate', 'kind', 'warm-hearted', 'generosity', 'looking after', 'taking care of'];
+        let collaborative = ['teamwork', 'collaboration', 'together', 'cross-department', 'interdependent', 'group', 'unite', 'team up', 'collude', 'amalgamate', 'team', 'team work', 'team player'];
+        let brilliant = ['sharp', 'achiever', 'over-achiever', 'achievement', 'award', 'best', 'awesome', 'amazing', 'limitless', 'gifted', 'accomplished', 'intellectual', 'excellent', 'talented', 'smart', 'witty', 'wit', 'smarty pants'];
         keywords.forEach(async function(keyword) {     
             if(keyword != null){
-                var thes = thesaurus.find(keyword.toLowerCase());
+                let thes = thesaurus.find(keyword.toLowerCase());
                 thes.push(keyword.toLowerCase());
                 if(keyword.toLowerCase() === 'independent'){
                     independent.forEach(function(ind) {
@@ -40,8 +40,8 @@ function getThesaurus(keywords) {
                         thes.push(bri);
                     });
                 }
-                var thesSet = new Set(thes);
-                var cleanThes = [...thesSet];
+                let thesSet = new Set(thes);
+                let cleanThes = [...thesSet];
                 results.push({[keyword]:cleanThes});
             }
         });
@@ -58,35 +58,35 @@ exports.analyze = async function(string,keys,cb) {
         cb(null,{'message':'Please make sure you send a string to analyze'});
         return;
     }
-    var keywords = keys;
-    var text = string.toLowerCase();
-    var sentiment = new Sentiment();
-    var sentimentCheck = sentiment.analyze(text);
-    var sentimentScore = sentimentCheck;    
-    var groups = await getThesaurus(keywords);
-    var results = [];
-    var graphData = [
+    let keywords = keys;
+    let text = string.toLowerCase();
+    let sentiment = new Sentiment();
+    let sentimentCheck = sentiment.analyze(text);
+    let sentimentScore = sentimentCheck;    
+    let groups = await getThesaurus(keywords);
+    let results = [];
+    let graphData = [
                 ["Keyword", "Percentage", { role: "style" }],
               ];
-    var colors = [
+    let colors = [
            "#5f95ed", "#6cde66", "#e6ed64", "#4bcca8", "#a65fe3", "#c164de", "#8f8f8f" 
         ];
-    var sentimentStatus = "";
-    var totalScore = 0;
+    let sentimentStatus = "";
+    let totalScore = 0;
     groups.forEach(async function(keyword) {        
-        var thes = [];
-        var score = 0;
+        let thes = [];
+        let score = 0;
         thes = thes.concat(keyword[(Object.keys(keyword)).join()]);
         thes.forEach(async function(word) {
-            var newScore = (text.match(word) || []).length;
+            let newScore = (text.match(word) || []).length;
             score += newScore;
             totalScore += newScore;
         });
-        var key = {
+        let key = {
             keyword: (Object.keys(keyword)).join(),
             score: score
         };
-        var label = [
+        let label = [
             (Object.keys(keyword)).join(),
             score,
             score==1?colors[0]:score==2?colors[1]:score==3?colors[2]:score==4?colors[3]:score==5?colors[4]:score==6?colors[5]:colors[6]
@@ -110,7 +110,7 @@ exports.analyze = async function(string,keys,cb) {
             graphData[i][1] = (graphData[i][1]/totalScore)*100;   
         }
     }
-    var response = {
+    let response = {
         text: text,
         sentiment_score: sentimentScore.score,
         sentiment_status: sentimentStatus,
